@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShiftTools</string>
+    <string name="app_version">1.2</string>
+    
+	<string name="SETTINGS_DIR">/data/data/mobi.cyann.shifttools/settings/</string>
+    <string name="SCRIPT_DIR">/data/data/mobi.cyann.shifttools/scripts/</string>
+    <string name="SCRIPT_VERSION">10</string>
+
+    <string-array name="scripts">
+        <item>preload.sh</item>
+    </string-array>
+
+    <string name="PRELOAD_SCRIPT">/data/data/mobi.cyann.shifttools/scripts/preload.sh</string>
+    <string name="INITD_SCRIPT">/etc/init.d/99shifttools</string>
+    
+	<string name="shifttools_thread_url"></string>
+	
+	<string name="key_fast_charge_forced">key_fast_charge_forced</string>
+    <string name="key_bld_status">key_bld_status</string>
+    <string name="key_bld_delay">key_bld_delay</string>
+    <string name="key_bln_status">key_bln_status</string>
+    <string name="key_bln_blink">key_bln_blink</string>
+    <string name="key_bln_blink_interval">key_bln_blink_interval</string>
+    <string name="key_bln_blink_count">key_bln_blink_count</string>
+    <string name="key_bln_timeout">key_bln_timeout</string>
+    <string name="key_blx_charging_limit">key_blx_charging_limit</string>
+
+    <string name="key_idle_mode">key_idle_mode</string>
+    <string name="key_deepidle_status">key_deepidle_status</string>
+	<string name="key_deepidle_stats">key_deepidle_stats</string>
+    <string name="key_liveoc">key_liveoc</string>
+	<string name="key_liveoc_target_low">key_liveoc_target_low</string>
+    <string name="key_liveoc_target_high">key_liveoc_target_high</string>
+    <string name="key_screendimmer_status">key_screendimmer_status</string>
+    <string name="key_screendimmer_delay">key_screendimmer_delay</string>
+    <string name="key_touchwake_status">key_touchwake_status</string>
+    <string name="key_touchwake_delay">key_touchwake_delay</string>
+    <string name="key_default_voltage">key_default_voltage</string>
+    <string name="key_arm_volt_pref">key_arm_volt_pref</string>
+    <string name="key_uvmvtable_pref">key_uvmvtable_pref</string>
+    <string name="key_max_arm_volt">key_max_arm_volt</string>
+    <string name="key_int_volt_pref">key_int_volt_pref</string>
+    <string name="key_max_int_volt">key_max_int_volt</string>
+    <string name="key_dont_show_volt_warning">key_dont_show_volt_warning</string>
+    <string name="key_restore_on_boot">key_restore_on_boot</string>
+    <string name="key_restore_on_initd">key_restore_on_initd</string>
+    <string name="key_shifttools_service">key_shifttools_service</string>
+    <string name="key_force_restore_on_boot">key_force_restore_on_boot</string>
+    <string name="key_load_settings">key_load_settings</string>
+    <string name="key_save_settings">key_save_settings</string>
+    <string name="key_delete_settings">key_delete_settings</string>
+    <string name="key_about">key_about</string>
+    <string name="key_governor">key_governor</string>
+    <string name="key_max_cpufreq">key_max_cpufreq</string>
+    <string name="key_screenoff_maxfreq">key_screenoff_maxfreq</string>
+    <string name="key_min_cpufreq">key_min_cpufreq</string>
+    <string name="key_cmled_bltimeout">key_cmled_bltimeout</string>
+    <string name="key_cmled_blink">key_cmled_blink</string>
+    <string name="key_cmled_blinktimeout">key_cmled_blinktimeout</string>
+    <string name="key_iosched">key_iosched</string>
+    <string name="key_kernel_version">key_kernel_version</string>
+    <string name="key_lulzactive_inc_cpu_load">key_lulzactive_inc_cpu_load</string>
+    <string name="key_lulzactive_pump_up_step">key_lulzactive_pump_up_step</string>
+    <string name="key_lulzactive_pump_down_step">key_lulzactive_pump_down_step</string>
+    <string name="key_lulzactive_screen_off_min_step">key_lulzactive_screen_off_min_step</string>
+    <string name="key_lulzactive_up_sample_time">key_lulzactive_up_sample_time</string>
+    <string name="key_lulzactive_down_sample_time">key_lulzactive_down_sample_time</string>
+    <string name="key_ondemand_sampling_rate">key_ondemand_sampling_rate</string>
+    <string name="key_ondemand_up_threshold">key_ondemand_up_threshold</string>
+    <string name="key_ondemand_sampling_down_factor">key_ondemand_sampling_down_factor</string>
+    <string name="key_ondemand_powersave_bias">key_ondemand_powersave_bias</string>
+    <string name="key_conservative_sampling_rate">key_conservative_sampling_rate</string>
+    <string name="key_conservative_down_threshold">key_conservative_down_threshold</string>
+    <string name="key_conservative_up_threshold">key_conservative_up_threshold</string>
+    <string name="key_conservative_sampling_down_factor">key_conservative_sampling_down_factor</string>
+    <string name="key_conservative_freq_step">key_conservative_freq_step</string>
+    <string name="key_conservative_ignore_nice_load">key_conservative_ignore_nice_load</string>
+	<string name="key_smartass_awake_ideal_freq">key_smartass_awake_ideal_freq</string>
+	<string name="key_smartass_sleep_ideal_freq">key_smartass_sleep_ideal_freq</string>
+	<string name="key_smartass_sleep_wakeup_freq">key_smartass_sleep_wakeup_freq</string>
+	<string name="key_smartass_min_cpu_load">key_smartass_min_cpu_load</string>
+	<string name="key_smartass_max_cpu_load">key_smartass_max_cpu_load</string>
+	<string name="key_smartass_ramp_down_step">key_smartass_ramp_down_step</string>
+	<string name="key_smartass_ramp_up_step">key_smartass_ramp_up_step</string>
+	<string name="key_smartass_down_rate_us">key_smartass_down_rate_us</string>
+	<string name="key_smartass_up_rate_us">key_smartass_up_rate_us</string>
+	<string name="key_interactive_go_hispeed_load">key_interactive_go_hispeed_load</string>
+	<string name="key_interactive_target_loads">key_interactive_target_loads</string>
+	<string name="key_interactive_hispeed_freq">key_interactive_hispeed_freq</string>
+	<string name="key_interactive_min_sample_time">key_interactive_min_sample_time</string>
+	<string name="key_interactive_timer_rate">key_interactive_timer_rate</string>
+
+	<string name="key_smooth_ui_enabled">key_smooth_ui_enabled</string>
+       
+	<!-- Battery -->
+	<string name="key_dcp_ac_input_curr">key_dcp_ac_input_curr</string>
+	<string name="key_dcp_ac_chrg_curr">key_dcp_ac_chrg_curr</string>
+	<string name="key_sdp_input_curr">key_sdp_input_curr</string>
+	<string name="key_sdp_chrg_curr">key_sdp_chrg_curr</string>
+	<string name="key_cdp_input_curr">key_cdp_input_curr</string>
+	<string name="key_cdp_chrg_curr">key_cdp_chrg_curr</string>
+	<string name="key_ignore_stable_margin">key_ignore_stable_margin</string>
+	<string name="key_ignore_unstable_power">key_ignore_unstable_power</string>
+	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
+     
+	<string-array name="iosched_interfaces">
+	    <item>/sys/block/mtdblock4/queue/scheduler</item>
+	    <item>/sys/block/mmcblk0/queue/scheduler</item>
+	</string-array>
+	
+	<string name="button_plus">+</string>
+	<string name="button_minus">-</string>
+</resources>

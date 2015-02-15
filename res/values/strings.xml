@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- NSTweakActivity -->
+    <string name="ns_tweak">Tweak</string>
+    <string name="fast_charge_tweak">Fast Charge</string>
+    <string name="bld_tweak">Backlight Dimmer</string>
+    <string name="bln_tweak">Backlight Notification</string>
+    <string name="label_bln_blink">Blink Status</string>
+    <string name="label_bln_blink_interval">Blink Interval</string>
+    <string name="label_bln_blink_count">Max Blink Count</string>
+    <string name="label_bln_timeout">Led Timeout</string>
+    <string name="blx_tweak">Battery Life Extender</string>
+    <string name="label_charging_limit">Charging Limit</string>
+	<string name="cmled_tweak">CMLed</string>
+    <string name="label_cmled_bltimeout">Led Timeout</string>
+    <string name="label_cmled_blink">Blink</string>
+    <string name="label_cmled_blinktimeout">Blink Timeout</string>
+    <string name="touchwake_tweak">Touchwake</string>
+	<string name="iosched_tweak">IO Scheduler</string>
+	<string name="label_iosched">Active scheduler</string>
+	
+    <!-- VoltageControlActivity -->
+    <string name="voltage_control">Volt</string>
+    <string name="label_default_voltage">Default voltages</string>
+    <string name="summaryOn_default_voltage">Use voltage settings from kernel</string>
+    <string name="summaryOff_default_voltage">Use customized voltage settings below</string>
+    <string name="arm_voltage">Arm Voltage</string>
+    <string name="label_max_arm_volt">Max Arm Volt</string>
+    <string name="int_voltage">Int Voltage</string>
+    <string name="label_max_int_volt">Max Int Volt</string>
+    <string name="warning_message">These settings are dangerous. Use at your own risk.</string>
+    <string name="dontshow_message">Don\'t show this message again</string>
+
+    <!-- common -->
+    <string name="label_status">Status</string>
+    <string name="label_delay">Delay</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="label_save">Save</string>
+    <string name="label_load">Load</string>
+    <string name="label_warning">WARNING</string>
+    <string name="status_on"><b>ON</b></string>
+    <string name="status_off"><b>OFF</b></string>
+    <string name="status_not_available"><i>not available</i></string>
+	
+
+    <!-- Setting Activity -->
+    <string name="label_setting">Setting</string>
+    <string name="label_restore_on_boot">Set on boot</string>
+    <string name="summaryOn_restore_on_boot">Settings will persist across reboots</string>
+    <string name="summaryOff_restore_on_boot">Reset to default settings on boot</string>
+    <string name="label_restore_on_initd">Use init.d script</string>
+    <string name="summaryOn_restore_on_initd">Set through init.d script</string>
+    <string name="summaryOff_restore_on_initd">Set through android boot complete event</string>
+    <string name="label_shifttools_service">ShiftTools service</string>
+    <string name="summaryOn_shifttools_service">Enable service for BLN missed call and timeout</string>
+    <string name="summaryOff_shifttools_service">Disable service for BLN missed call and timeout</string>
+    <string name="label_force_restore_on_boot">Ignore Kernel Version</string>
+    <string name="summaryOn_force_restore_on_boot">Settings apply even after Kernel change</string>
+    <string name="summaryOff_force_restore_on_boot">Reset to default settings on boot if Kernel changend</string>
+
+    <string name="label_load_settings">Load</string>
+    <string name="summary_load_settings">Load settings from saved file</string>
+    <string name="label_save_settings">Save</string>
+    <string name="summary_save_settings">Save current settings to file</string>
+    <string name="save_success_message">Settings saved</string>
+    <string name="save_failed_message">Failed to save settings</string>
+    <string name="label_delete_settings">Delete</string>
+    <string name="summary_delete_settings">Delete saved file</string>
+    <string name="label_about">About</string>
+    <string name="about_text">ShiftTools on XDA</string>
+    <string name="about_desc">Visit ShiftTools thread on XDA</string>
+
+    <!-- CPU Activity -->
+    <string name="label_cpu_tweak">CPU</string>
+    <string name="label_idle_mode">Idle Mode</string>
+    <string name="title_idle_mode">Set Idle Mode</string>
+    <string name="label_governor">Governor</string>
+    <string name="label_min_cpufreq">Min CPU freq</string>
+    <string name="label_max_cpufreq">Max CPU freq</string>
+    <string name="deepidle_tweak">Deep Idle</string>
+    <string name="label_deepidle_stats">Idle Stats</string>
+    <string name="label_state">State</string>
+    <string name="label_time">Time (ms)</string>
+    <string name="label_average">Avg (ms)</string>
+    <string name="label_reset">Reset</string>
+    <string name="label_close">Close</string>
+    <string name="label_idle1">Idle</string>
+    <string name="label_idle2">Deep Idle (TOP=ON)</string>
+    <string name="label_idle3">Deep Idle (TOP=OFF)</string>
+    <string name="liveoc_tweak">Live OC</string>
+    <string name="label_liveoc_ocvalue">OC Value</string>
+    <string name="label_liveoc_target_low">OC Target Low</string>
+    <string name="label_liveoc_target_high">OC Target High</string>
+
+	<!-- general governor -->
+    <string name="general_governor">General Governor Tweaks</string>
+    <string name="label_smooth_ui_enabled">Smooth Ui</string>
+
+	<!-- lazy governor -->
+    <string name="label_lazy">Lazy</string>
+    <string name="label_screenoff_maxfreq">Screen off max freq</string>
+    <!-- lulzactive governor -->
+    <string name="label_lulzactive">Lulzactive</string>
+    <string name="label_lulzactive_inc_cpu_load">Inc CPU load</string>
+    <string name="label_lulzactive_pump_up_step">Pump up step</string>
+    <string name="label_lulzactive_pump_down_step">Pump down step</string>
+    <string name="label_lulzactive_screen_off_min_step">Screen off min step</string>
+    <string name="label_lulzactive_down_sample_time">Down sample time</string>
+    <string name="label_lulzactive_up_sample_time">Up sample time</string>
+    <!-- ondemand governor -->
+    <string name="label_ondemand">Ondemand</string>
+    <string name="label_ondemand_sampling_rate">Sampling rate</string>
+    <string name="label_ondemand_up_threshold">Up threshold</string>
+    <string name="label_ondemand_sampling_down_factor">Sampling down factor</string>
+    <string name="label_ondemand_powersave_bias">Powersave bias</string>
+    <!-- conservative governor -->
+    <string name="label_conservative">Conservative</string>
+    <string name="label_conservative_sampling_rate">Sampling rate</string>
+    <string name="label_conservative_down_threshold">Down threshold</string>
+    <string name="label_conservative_up_threshold">Up threshold</string>
+    <string name="label_conservative_sampling_down_factor">Sampling down factor</string>
+    <string name="label_conservative_freq_step">Freq step</string>
+    <string name="label_conservative_ignore_nice_load">Ignore nice load</string>
+	<!-- smartass2 governor -->
+	<string name="label_smartass">Smartass v2</string>
+	<string name="label_smartass_awake_ideal_freq">Awake ideal freq</string>
+	<string name="label_smartass_sleep_ideal_freq">Sleep ideal freq</string>
+	<string name="label_smartass_sleep_wakeup_freq">Sleep wakeup freq</string>
+	<string name="label_smartass_min_cpu_load">Min CPU load</string>
+	<string name="label_smartass_max_cpu_load">Max CPU load</string>
+	<string name="label_smartass_ramp_down_step">Ramp down step</string>
+	<string name="label_smartass_ramp_up_step">Ramp up step</string>
+	<string name="label_smartass_down_rate_us">Down rate</string>
+	<string name="label_smartass_up_rate_us">Up rate</string>
+	<!-- interactive governor -->
+	<string name="label_interactive">Interactive</string>
+	<string name="label_interactive_go_hispeed_load">Go hispeed load</string>
+	<string name="label_interactive_target_loads">Target loads</string>
+	<string name="label_interactive_hispeed_freq">Hispeed freq</string>
+	<string name="label_interactive_min_sample_time">Min sample time</string>
+	<string name="label_interactive_timer_rate">Timer rate</string>
+
+	<!-- Battery -->
+	<string name="label_battery_tweak">Charging Control</string>
+	<string name="label_dcp_ac_input_curr">DCP AC Input Current</string>
+	<string name="label_dcp_ac_chrg_curr">DCP AC Charge Current</string>
+	<string name="label_sdp_input_curr">SDP Input Current</string>
+	<string name="label_sdp_chrg_curr">SDP Charge Current</string>
+	<string name="label_cdp_input_curr">CDP Input Current</string>
+	<string name="label_cdp_chrg_curr">CDP Charge Current</string>
+	<string name="label_ignore_stable_margin">Ignore 100mA safety margin</string>
+	<string name="label_ignore_unstable_power">Ignore unstable power detection</string>
+	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
+
+	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>
+
+    <!-- About Activity -->
+    <string name="label_info">Info</string>
+</resources>

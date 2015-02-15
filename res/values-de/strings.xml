@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- NSTweakActivity -->
+    <string name="ns_tweak">Tweaks</string>
+    <string name="bld_tweak">Backlight Dimmer</string>
+    <string name="bln_tweak">Backlight Notification</string>
+    <string name="label_bln_blink">Blink Status</string>
+    <string name="blx_tweak">Battery Life Extender</string>
+    <string name="label_charging_limit">Ladebegrenzung</string>
+	<string name="cmled_tweak">CMLed</string>
+    <string name="label_cmled_bltimeout">Led Timeout</string>
+    <string name="label_cmled_blink">Blink</string>
+    <string name="label_cmled_blinktimeout">Blink Timeout</string>
+    <string name="touchwake_tweak">Touchwake</string>
+    <string name="iosched_tweak">IO Scheduler</string>
+    <string name="label_iosched">Aktiver Scheduler</string>
+
+    <!-- VoltageControlActivity -->
+    <string name="voltage_control">Benutzerdefinierte Spannung</string>
+    <string name="label_default_voltage">Voreingestellte Werte</string>
+    <string name="summaryOn_default_voltage">Verwende die standard Kernelspannung</string>
+    <string name="summaryOff_default_voltage">Verwende benutzerdefinierte Kernelspannung</string>
+    <string name="arm_voltage">Arm Spannung</string>
+    <string name="label_max_arm_volt">Maximale Arm Spannung</string>
+    <string name="int_voltage">Int Spannung</string>
+    <string name="label_max_int_volt">Maximale Int Spannung</string>
+    <string name="warning_message">Diese Einstellungen sind gefährlich. Benutzung auf eigene Gefahr.</string>
+    <string name="dontshow_message">Diese Nachricht nicht mehr anzeigen</string>
+
+    <!-- common -->
+    <string name="label_status">Status</string>
+    <string name="label_delay">Verzögerung</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_cancel">Abbrechen</string>
+    <string name="label_yes">Ja</string>
+    <string name="label_no">Nein</string>
+    <string name="label_warning">WARNUNG</string>
+    <string name="status_on"><b>Eingeschaltet</b></string>
+    <string name="status_off"><b>Ausgeschaltet</b></string>
+    <string name="status_not_available"><i>nicht verfügbar</i></string>
+
+    <!-- Setting Activity -->
+    <string name="label_setting">Einstellungen</string>
+    <string name="label_restore_on_boot">Setze Werte beim Start</string>
+    <string name="summaryOn_restore_on_boot">Diese Einstellungen nach einem Neustart verwenden</string>
+    <string name="summaryOff_restore_on_boot">Diese Einstellungen nicht nach einem Neustart verwenden</string>
+    <string name="label_about">Über</string>
+    <string name="about_text">ShiftTools bei XDA</string>
+    <string name="about_desc">Besuche den ShiftTools Forum-Thread bei XDA</string>
+
+    <!-- CPU Activity -->
+    <string name="label_cpu_tweak">CPU</string>
+    <string name="label_governor">Governor</string>
+    <string name="label_min_cpufreq">Minimale CPU Frequenz</string>
+    <string name="label_max_cpufreq">Maximale CPU Frequenz</string>
+    <string name="label_lazy">Lazy</string>
+    <string name="label_screenoff_maxfreq">Max. Frequenz bei Screen off</string>
+    <string name="deepidle_tweak">Deep Idle</string>
+    <string name="label_deepidle_stats">Idle Status</string>
+    <string name="label_state">Status</string>
+    <string name="label_time">Zeit (ms)</string>
+    <string name="label_average">Ø (ms)</string>
+    <string name="label_reset">Zurücksetzen</string>
+    <string name="label_close">Schließen</string>
+    <string name="label_idle1">Idle</string>
+    <string name="label_idle2">Deep Idle (TOP=ON)</string>
+    <string name="label_idle3">Deep Idle (TOP=OFF)</string>
+    <string name="liveoc_tweak">Live OC</string>
+    <string name="label_liveoc_ocvalue">Übertaktungswert</string>
+    
+    <string name="msg_kernel_changed">Die Einstellungen werden verworfen weil sich die Kernelversion geändert hat</string>
+</resources>
