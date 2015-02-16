@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.shifttools" android:key="root" >
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="@string/key_default_voltage"
         android:summaryOff="@string/summaryOff_default_voltage"
         android:summaryOn="@string/summaryOn_default_voltage"

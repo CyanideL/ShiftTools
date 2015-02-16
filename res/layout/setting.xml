@@ -2,14 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.shifttools">
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="true"
         android:key="@string/key_restore_on_boot"
         android:summaryOff="@string/summaryOff_restore_on_boot"
         android:summaryOn="@string/summaryOn_restore_on_boot"
         android:title="@string/label_restore_on_boot" />
   
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="false"
         android:key="@string/key_restore_on_initd"
         android:summaryOff="@string/summaryOff_restore_on_initd"
@@ -17,15 +17,15 @@
         android:title="@string/label_restore_on_initd"
         android:dependency="@string/key_restore_on_boot" />
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="false"
         android:key="@string/key_force_restore_on_boot"
         android:summaryOff="@string/summaryOff_force_restore_on_boot"
         android:summaryOn="@string/summaryOn_force_restore_on_boot"
         android:title="@string/label_force_restore_on_boot"
-	android:dependency="@string/key_restore_on_boot" />
+		android:dependency="@string/key_restore_on_boot" />
     
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="false"
         android:key="@string/key_shifttools_service"
         android:summaryOff="@string/summaryOff_shifttools_service"
