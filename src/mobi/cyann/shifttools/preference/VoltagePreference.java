@@ -1,7 +1,3 @@
-/**
- * VoltagePreference.java
- * Nov 27, 2011 8:07:22 PM
- */
 package mobi.cyann.shifttools.preference;
 
 import mobi.cyann.shifttools.PreloadValues;

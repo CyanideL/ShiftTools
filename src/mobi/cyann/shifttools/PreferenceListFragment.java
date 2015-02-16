@@ -1,7 +1,3 @@
-/**
- * PreferenceListFragment.java
- * Feb 1, 2012 11:01:24 PM
- */
 package mobi.cyann.shifttools;
 
 import java.lang.reflect.Constructor;

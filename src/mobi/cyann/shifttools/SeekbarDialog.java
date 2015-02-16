@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -21,6 +22,7 @@ import android.widget.TextView;
  *
  */
 public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListener, View.OnClickListener {
+	private final static String LOG_TAG = "ShiftTools.SeekbarDialog";
 	private SeekBar seekbar;
 	private TextView textValue;
 	private EditText editValue;
@@ -30,7 +32,9 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 	private int max;
 	private int step;
 	private int value;
+	private int shift;
 	private String metrics;
+	private String description;
 	
 	private DialogInterface.OnClickListener okButtonListener;
 	private DialogInterface.OnClickListener cancelButtonListener;
@@ -44,6 +48,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		cancelButtonListener = cancel;
 		min = 0;
 		max = 100;
+		shift = 0;
 		step = 1;
 		value = 0;
 		
@@ -65,7 +70,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		seekbar.setOnSeekBarChangeListener(this);
 
 		editValue = (EditText)customView.findViewById(R.id.editValue);
-		editValue.setOnKeyListener(new View.OnKeyListener() {
+		/*editValue.setOnKeyListener(new View.OnKeyListener() {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				String val = editValue.getText().toString();
@@ -83,21 +88,21 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 				}
 				return false;
 			}
-		});
+		});*/
 		
 		// set onclick to text (show soft keyboard)
 		textValue = (TextView)customView.findViewById(R.id.textValue);
-		textValue.setOnClickListener(new View.OnClickListener() {
+		/*textValue.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) { // open EditText
-				editValue.setText(String.valueOf(value));
+				editValue.setText(String.valueOf(value-shift));
 				editValue.setVisibility(View.VISIBLE);
 				textValue.setVisibility(View.GONE);
 				editValue.requestFocus();
 				
 				inputMethodManager.showSoftInput(editValue, InputMethodManager.SHOW_FORCED);
 			}
-		});
+		});*/
 
 		// set on click to '-' button
 		customView.findViewById(R.id.valueMin).setOnClickListener(this);
@@ -115,15 +120,20 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		}else {
 			value += step;
 		}
+		if(value < min) {
+			value = min;
+		}else if(value > max) {
+			value = max;
+		}
 		editValue.setText(String.valueOf(value));
 		resetValues();
 	}
 	
-	private void closeEditText() {
+	/*private void closeEditText() {
 		inputMethodManager.hideSoftInputFromWindow(editValue.getWindowToken(), 0);
 		editValue.setVisibility(View.GONE);
 		textValue.setVisibility(View.VISIBLE);
-	}
+	}*/
 	
 	private void resetValues() {
 		int seekbarValue = (value - min) / step;
@@ -131,11 +141,12 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		if(seekbar != null && textValue != null) {
 			seekbar.setMax(seekbarMax);
 			seekbar.setProgress(seekbarValue);
-			if(metrics != null) {
-				textValue.setText(value + " " + metrics);
-			}else {
-				textValue.setText(String.valueOf(value));	
-			}
+        		if(metrics != null) {
+        			textValue.setText(value - shift + " " + metrics);
+        		}else {
+        			textValue.setText(String.valueOf(value - shift));
+        		}
+
 		}
 	}
 	
@@ -145,6 +156,14 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 
 	public void setMetrics(String metrics) {
 		this.metrics = metrics;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	public int getStep() {
@@ -190,17 +209,28 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 		this.max = max;
 		resetValues();
 	}
+
+	public int getShift() {
+		return shift;
+	}
+
+	public void setShift(int shift) {
+		this.shift = shift;
+		resetValues();
+	}
 	
 	@Override
 	public void onProgressChanged(SeekBar seekBar, int progress,
 			boolean fromUser) {
 
 		value = progress * step + min;
-		if(metrics != null) {
-			textValue.setText(value + " " + metrics);
-		}else {
-			textValue.setText(String.valueOf(value));	
-		}
+		int newvalue = value - shift;
+        	if(metrics != null) {
+        		textValue.setText(newvalue + " " + metrics);
+        	}else {
+        		textValue.setText(String.valueOf(newvalue));
+        	}
+
 	}
 
 	@Override
@@ -215,7 +245,7 @@ public class SeekbarDialog extends AlertDialog implements OnSeekBarChangeListene
 
 	@Override
 	public void dismiss() {
-		closeEditText();
+		//closeEditText();
 		super.dismiss();
 	}
 	

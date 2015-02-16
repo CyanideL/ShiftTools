@@ -1,7 +1,3 @@
-/**
- * ListPreference.java
- * Nov 27, 2011 1:18:40 PM
- */
 package mobi.cyann.shifttools.preference;
 
 import mobi.cyann.shifttools.PreloadValues;

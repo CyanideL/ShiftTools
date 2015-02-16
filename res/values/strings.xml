@@ -2,7 +2,7 @@
 <resources>
 
     <!-- NSTweakActivity -->
-    <string name="ns_tweak">Tweak</string>
+    <string name="ns_tweak">Kernel Tweaks</string>
     <string name="fast_charge_tweak">Fast Charge</string>
     <string name="bld_tweak">Backlight Dimmer</string>
     <string name="bln_tweak">Backlight Notification</string>
@@ -19,9 +19,39 @@
     <string name="touchwake_tweak">Touchwake</string>
 	<string name="iosched_tweak">IO Scheduler</string>
 	<string name="label_iosched">Active scheduler</string>
+    <!-- LED Control -->
+    <string name="led_control">LED Control</string>
+    <string name="led_fade_control">Enable Fading</string>
+    <string name="led_intensity">Brightness</string>
+    <string name="label_led_intensity">LED Brightness</string>
+    <string name="led_speed">Speed</string>
+    <string name="label_led_speed">Speed</string>
+    <string name="led_slope_up_1">LED Slope Up1</string>
+    <string name="led_slope_up_2">LED Slope Up2</string>
+    <string name="led_slope_down_1">LED Slope Down1</string>
+    <string name="led_slope_down_2">LED Slope Down2</string>
+    <string name="label_led_slope_up_1">Slope Up1</string>
+    <string name="label_led_slope_up_2">Slope Up2</string>
+    <string name="label_led_slope_down_1">Slope Down1</string>
+    <string name="label_led_slope_down_2">Slope Down2</string>
+
+    <!-- Touchkey backlight -->
+    <string name="touch_led_handling">Touchkey backlight settings</string>
+    <string name="label_touch_led_handling">Kernel controls backlight</string>
+    <string name="label_touch_led_on_screen_touch">Light up on screen touch</string>
+    <string name="label_touch_led_force_disable">Completely disable backlight</string>
+    <string name="label_touch_led_timeout">Backlight timeout</string>
+
+    <!-- Performance -->
+    <string name="label_performance_tweak">Performance Settings</string>
+
 	
     <!-- VoltageControlActivity -->
-    <string name="voltage_control">Volt</string>
+    <string name="voltage_control">Voltage Control</string>
+    <string name="cpu_voltage_category">CPU Voltage Control</string>
+    <string name="cpu_voltage_control">CPU Voltage</string>
+    <string name="gpu_voltage_category">GPU Voltage Control</string>
+    <string name="gpu_voltage_control">GPU Voltage</string>
     <string name="label_default_voltage">Default voltages</string>
     <string name="summaryOn_default_voltage">Use voltage settings from kernel</string>
     <string name="summaryOff_default_voltage">Use customized voltage settings below</string>
@@ -49,19 +79,18 @@
 
     <!-- Setting Activity -->
     <string name="label_setting">Setting</string>
+    <string name="label_reboot_preference">Which rom to boot next time</string>
+    <string name="summaryOn_reboot_preference">Rebooting into secondary rom</string>
+    <string name="summaryOff_reboot_preference">Rebooting into primary rom</string>
     <string name="label_restore_on_boot">Set on boot</string>
     <string name="summaryOn_restore_on_boot">Settings will persist across reboots</string>
     <string name="summaryOff_restore_on_boot">Reset to default settings on boot</string>
-    <string name="label_restore_on_initd">Use init.d script</string>
-    <string name="summaryOn_restore_on_initd">Set through init.d script</string>
-    <string name="summaryOff_restore_on_initd">Set through android boot complete event</string>
-    <string name="label_shifttools_service">ShiftTools service</string>
-    <string name="summaryOn_shifttools_service">Enable service for BLN missed call and timeout</string>
-    <string name="summaryOff_shifttools_service">Disable service for BLN missed call and timeout</string>
     <string name="label_force_restore_on_boot">Ignore Kernel Version</string>
     <string name="summaryOn_force_restore_on_boot">Settings apply even after Kernel change</string>
     <string name="summaryOff_force_restore_on_boot">Reset to default settings on boot if Kernel changend</string>
-
+    <string name="label_shifttools_service">ShiftTools service</string>
+    <string name="summaryOn_shifttools_service">Enable service for BLN missed call and timeout</string>
+    <string name="summaryOff_shifttools_service">Disable service for BLN missed call and timeout</string>
     <string name="label_load_settings">Load</string>
     <string name="summary_load_settings">Load settings from saved file</string>
     <string name="label_save_settings">Save</string>
@@ -74,13 +103,17 @@
     <string name="about_text">ShiftTools on XDA</string>
     <string name="about_desc">Visit ShiftTools thread on XDA</string>
 
+    <string name="label_donation">Donation</string>
+    <string name="donation_text">Donate to Rogersb11</string>
+
     <!-- CPU Activity -->
-    <string name="label_cpu_tweak">CPU</string>
+    <string name="label_cpu_tweak">CPU Control</string>
     <string name="label_idle_mode">Idle Mode</string>
     <string name="title_idle_mode">Set Idle Mode</string>
     <string name="label_governor">Governor</string>
     <string name="label_min_cpufreq">Min CPU freq</string>
     <string name="label_max_cpufreq">Max CPU freq</string>
+    <string name="label_cpu_scaling">Set CPU freq limits</string>
     <string name="deepidle_tweak">Deep Idle</string>
     <string name="label_deepidle_stats">Idle Stats</string>
     <string name="label_state">State</string>
@@ -111,12 +144,60 @@
     <string name="label_lulzactive_screen_off_min_step">Screen off min step</string>
     <string name="label_lulzactive_down_sample_time">Down sample time</string>
     <string name="label_lulzactive_up_sample_time">Up sample time</string>
+
+    <!-- lulzactiveq governor -->
+    <string name="label_lulzactiveq">lulzactiveq</string>
+    <string name="label_lulzactiveq_inc_cpu_load">Inc Cpu Load</string>
+    <string name="label_lulzactiveq_dec_cpu_load">Dec CPU load</string>
+    <string name="label_lulzactiveq_pump_up_step">Pump up step</string>
+    <string name="label_lulzactiveq_pump_down_step">Pump down step</string>
+    <string name="label_lulzactiveq_screen_off_max_step">Screen off max step</string>
+    <string name="label_lulzactiveq_down_sample_time">Down sample time</string>
+    <string name="label_lulzactiveq_up_sample_time">Up sample time</string>
+    <string name="label_lulzactiveq_cpu_up_rate">Up_rate sample period</string>
+    <string name="label_lulzactiveq_cpu_down_rate">Down_rate sample period</string>
+    <string name="label_lulzactiveq_hispeed_freq">Hi-speed Freq</string>
+    <string name="label_lulzactiveq_hotplug_freq_1_1">Turn 2nd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_2_0">Turn 2nd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_freq_2_1">Turn 3rd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_3_0">Turn 3rd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_freq_3_1">Turn 4th Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_freq_4_0">Turn 4th Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_lock">Hotplug_lock online Cpus</string>
+    <string name="label_lulzactiveq_hotplug_rq_1_1">rq: turn 2nd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_2_0">rq: turn 2nd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_rq_2_1">rq: turn 3rd Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_3_0">rq: turn 3rd Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_rq_3_1">rq: turn 4th Cpu online</string>
+    <string name="label_lulzactiveq_hotplug_rq_4_0">rq: turn 4th Cpu offline</string>
+    <string name="label_lulzactiveq_hotplug_sampling_rate">hotplug sample rate</string>
+    <string name="label_lulzactiveq_ignore_nice_load">Ignore nice load</string>
+    <string name="label_lulzactiveq_min_cpu_lock">min online cpus</string>
+    <string name="label_lulzactiveq_max_cpu_lock">max online cpus</string>
+    <string name="label_lulzactiveq_up_nr_cpus">auto-hotplug: min online cpus</string>
+
+    <!-- hotplug governor -->
+    <string name="label_hotplug">hotplug</string>
+    <string name="label_hotplug_down_differential">Down Differential</string>
+    <string name="label_hotplug_down_threshold">Down Threshold</string>
+    <string name="label_hotplug_up_threshold">Up Threshold</string>
+    <string name="label_hotplug_in_sampling_periods">Sampling Periods in</string>
+    <string name="label_hotplug_out_sampling_periods">Sampling Periods out</string>
+    <string name="label_hotplug_ignore_nice_load">Ignore nice load</string>
+    <string name="label_hotplug_io_is_busy">I/O is busy</string>
+    <string name="label_hotplug_sampling_rate">Sampling Rate</string>
+
     <!-- ondemand governor -->
     <string name="label_ondemand">Ondemand</string>
     <string name="label_ondemand_sampling_rate">Sampling rate</string>
     <string name="label_ondemand_up_threshold">Up threshold</string>
     <string name="label_ondemand_sampling_down_factor">Sampling down factor</string>
     <string name="label_ondemand_powersave_bias">Powersave bias</string>
+    <string name="label_ondemand_early_demand">Early Demand</string>
+    <string name="label_ondemand_grad_up_threshold">Gradient Up threshold</string>
+    <string name="label_ondemand_sleep_up_threshold">Up threshold (screen off)</string>
+    <string name="label_ondemand_sleep_sampling_rate">Sampling rate (screen off)</string>
+
     <!-- conservative governor -->
     <string name="label_conservative">Conservative</string>
     <string name="label_conservative_sampling_rate">Sampling rate</string>
@@ -125,6 +206,11 @@
     <string name="label_conservative_sampling_down_factor">Sampling down factor</string>
     <string name="label_conservative_freq_step">Freq step</string>
     <string name="label_conservative_ignore_nice_load">Ignore nice load</string>
+    <string name="label_conservative_sleep_up_threshold">Up threshold (screen off)</string>
+    <string name="label_conservative_sleep_sampling_rate">Sampling rate (screen off)</string>
+    <string name="label_conservative_smooth_up_enabled">Smooth Up</string>
+    <string name="label_conservative_smooth_up">Smooth Up threshold</string>
+
 	<!-- smartass2 governor -->
 	<string name="label_smartass">Smartass v2</string>
 	<string name="label_smartass_awake_ideal_freq">Awake ideal freq</string>
@@ -145,7 +231,7 @@
 	<string name="label_interactive_timer_rate">Timer rate</string>
 
 	<!-- Battery -->
-	<string name="label_battery_tweak">Charging Control</string>
+	<string name="label_battery_tweak">Charge Control</string>
 	<string name="label_dcp_ac_input_curr">DCP AC Input Current</string>
 	<string name="label_dcp_ac_chrg_curr">DCP AC Charge Current</string>
 	<string name="label_sdp_input_curr">SDP Input Current</string>
@@ -156,8 +242,73 @@
 	<string name="label_ignore_unstable_power">Ignore unstable power detection</string>
 	<string name="label_batt_chrg_soft_volt">Charge Soft voltage</string>
 
+	<!-- GPU -->
+	<string name="gpu_control">GPU Settings</string>
+	<string name="gpu_control_category">GPU Performance Settings</string>
+	<string name="label_gpu_speed">Clock Settings</string>
+	<string name="label_gpu_threshold">Up/Down Threshold</string>
+	<string name="label_gpu_utilization">Utilization</string>
+	<string name="label_mali_gpu_utilization_timeout">Utilization Timeout</string>
+	<string name="label_step0_clk">Gpu Speed Step 1</string>
+	<string name="label_step0_up">Up_threshold Step 1</string>
+	<string name="label_step1_clk">Gpu Speed Step 2</string>
+	<string name="label_step1_down">Down_threshold Step 2</string>
+	<string name="label_step1_up">Up_threshold Step 2</string>
+	<string name="label_step2_clk">Gpu Speed Step 3</string>
+	<string name="label_step2_down">Down_threshold Step 3</string>
+	<string name="label_step2_up">Up_threshold Step 3</string>
+	<string name="label_step3_clk">Gpu Speed Step 4</string>
+	<string name="label_step3_down">Down_threshold Step 4</string>
+	<string name="label_step3_up">Up_threshold Step 4</string>
+	<string name="label_step4_clk">Gpu Speed Step 5</string>
+	<string name="label_step4_down">Down_threshold Step 5</string>
+	<string name="gpu_voltage">GPU Voltage</string>
+    <string name="label_max_gpu_volt">Max GPU Volt</string>
+
+	<!-- Touch Boost -->
+    <string name="touch_boost">Touch Boost Control</string>
+    <string name="label_touch_boost_enabled">Touch Boost Status</string>
+    <string name="label_touch_boost_freq">Touch Boost Frequency</string>
+
+	<!-- Boeflla & Voodoo Sound -->
+    <string name="label_boeffla_sound_enable">Enable Boeflla Sound</string>
+    <string name="label_audio_tweak">Boeffla/Faux Sound</string>
+	<string name="label_speaker_tuning">Enable speaker tuning</string>
+	<string name="label_dac_oversampling">Enable DAC Oversampling</string>
+	<string name="label_speaker_offset">Speaker Amplification Offset</string>
+	<string name="offset_title">Amp Offset</string>
+	<string name="label_headphone_volume">Headphone Volume Level</string>
+	<string name="label_speaker_volume">Speaker Volume Level</string>
+	<string name="label_headphone_amplifier_level">Headphone Amplifier Level</string>
+	<string name="label_stereo_expansion">3D Effect Settings</string>
+	<string name="label_stereo_expansion_gain">3D Effect Gain Level</string>
+	<string name="label_headphone_eq">Use Graphical Eq</string>
+
+	<string name="eq_tuning_title_head">Equalizer Tuning</string>
+	<string name="eq_tuning_summary_head">Eq gain for band 1 to 5</string>
+	<string name="eq_b1_title">Band 1 gain</string>
+	<string name="eq_b2_title">Band 2 gain</string>
+	<string name="eq_b3_title">Band 3 gain</string>
+	<string name="eq_b4_title">Band 4 gain</string>
+	<string name="eq_b5_title">Band 5 gain</string>
+
+	<string name="label_fll_tuning">Anti-jitter</string>
+	<string name="label_dac_osr128">DAC OverSampling (play)</string>
+	<string name="label_dac_direct">DAC Direct</string>
+	<string name="label_adc_osr128">DAC OverSampling (record)</string>
+	<string name="label_mono_downmix">Force Mono</string>
+
+
 	<string name="msg_kernel_changed">Settings discarded because the kernel version has changed</string>
+
+	<!-- misc settings -->
+	<string name="dyn_fsync">Dynamic Fsync</string>
+	<string name="label_dyn_fsync">Dynamic Fsync</string>
+	<string name="vibration_intensity">Vibration Intensity</string>
+	<string name="label_vibration_intensity">Set vibration intensity</string>
 
     <!-- About Activity -->
     <string name="label_info">Info</string>
+
+    <string name="button_reset_title">Reset</string>
 </resources>

@@ -2,7 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
     xmlns:custom="http://schemas.android.com/apk/res/mobi.cyann.shifttools" android:key="root" >
 
-    <SwitchPreference
+    <PreferenceCategory android:title="@string/cpu_voltage_category"
+	android:key="key_cpu_voltage_category" >
+	<PreferenceScreen
+        android:key="key_cpu_voltage"
+        android:title="@string/cpu_voltage_control" >
+
+    <CheckBoxPreference
         android:key="@string/key_default_voltage"
         android:summaryOff="@string/summaryOff_default_voltage"
         android:summaryOn="@string/summaryOn_default_voltage"
@@ -40,5 +46,28 @@
             android:summary="0"
             android:title="@string/label_max_int_volt" />
     </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
+
+         </PreferenceScreen>
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/gpu_voltage_category"
+	android:key="key_gpu_voltage_category" >
+	<PreferenceScreen
+            android:key="key_gpu_voltage"
+            android:title="@string/gpu_voltage_control" >
+    	    <CheckBoxPreference
+           	 android:key="@string/key_default_gpu_voltage"
+            	android:summaryOff="@string/summaryOff_default_voltage"
+        	android:summaryOn="@string/summaryOn_default_voltage"
+        	android:title="@string/label_default_voltage" android:defaultValue="true"
+        	android:disableDependentsState="true"/>
+
+    	    <mobi.cyann.shifttools.preference.RemovablePreferenceCategory
+        	android:key="@string/key_gpu_volt_pref"
+        	android:title="@string/gpu_voltage" >
+    	    </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
+         </PreferenceScreen>
+    </PreferenceCategory>
 
 </PreferenceScreen>

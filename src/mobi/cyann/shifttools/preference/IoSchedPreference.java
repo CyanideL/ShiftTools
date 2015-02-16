@@ -1,7 +1,3 @@
-/**
- * IoSchedPreference.java
- * Nov 27, 2011 10:03:52 AM
- */
 package mobi.cyann.shifttools.preference;
 
 import java.util.Arrays;

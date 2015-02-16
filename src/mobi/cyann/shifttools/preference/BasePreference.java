@@ -41,17 +41,19 @@ public abstract class BasePreference<T> extends Preference {
 	protected abstract T readValue();
 	protected abstract void writeValue(T newValue, boolean writeInterface);
 	public abstract boolean isAvailable();
+	private int shift = 0;
 	
 	private static View blankView;
 	
 	public BasePreference(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		
-		setDefaultValue(-1);
+		setDefaultValue(-1000);
 		
 		TypedArray a = context.obtainStyledAttributes(attrs,R.styleable.mobi_cyann_shifttools_preference_BasePreference, defStyle, 0);
 		reloadOnResume = a.getBoolean(R.styleable.mobi_cyann_shifttools_preference_BasePreference_reloadOnResume, false);
 		interfacePath = a.getString(R.styleable.mobi_cyann_shifttools_preference_BasePreference_interfacePath);
+		shift = a.getInt(R.styleable.mobi_cyann_shifttools_preference_IntegerPreference_shift, 0);
 		dependencyType = a.getInt(R.styleable.mobi_cyann_shifttools_preference_BasePreference_dependencyType, 0);
 		a.recycle();
 		
@@ -86,6 +88,10 @@ public abstract class BasePreference<T> extends Preference {
 	public boolean isVisible() {
 		return visible;
 	}
+
+	public void setShift(int shift) {
+		this.shift = shift;
+	}
 	
 	protected String readFromInterface() {
 		String ret = null;
@@ -94,7 +100,16 @@ public abstract class BasePreference<T> extends Preference {
 			SysCommand sc = SysCommand.getInstance();
 			int n = sc.readSysfs(interfacePath); 
 			if(n > 0) {
-				ret = sc.getLastResult(0); 
+			ret = sc.getLastResult(0);
+			String[] splitResult = ret.split(" ");
+			for (int i = 0; i < splitResult.length; i++) {
+			    try {
+			    int tmpret = Integer.parseInt(splitResult[i]);
+			    ret = String.valueOf(tmpret);
+			    } catch (NumberFormatException ex){
+			    } catch (ArrayIndexOutOfBoundsException sx){}
+			}
+			
 				Log.d(LOG_TAG, "ROK:" + ret);
 			}else if(n < 0) {
 				Log.e(LOG_TAG, "RER:" + sc.getLastError(0));

@@ -17,7 +17,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.util.Log;
 import android.view.Window;
 import android.widget.HorizontalScrollView;
@@ -31,9 +30,14 @@ public class MainActivity extends FragmentActivity {
 	private TabHost tabHost;
 	private TabsAdapter tabsAdapter;
 	public static HorizontalScrollView mScrollView;
+	public static int suggestedWidth;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+	SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean darktheme = pref.getBoolean("darktheme", false);
+        if (!darktheme)
+            setTheme(android.R.style.Theme_Holo_Light);
 		super.onCreate(savedInstanceState);
 		
 		// start our ObserverService
@@ -63,38 +67,41 @@ public class MainActivity extends FragmentActivity {
 		Resources res = getResources();
 		
 		TabSpec tab1 = tabHost.newTabSpec("nstweak");
-		tab1.setIndicator(getString(R.string.ns_tweak), res.getDrawable(R.drawable.ic_tab_tweaks));
-		//tab1.setContent(new Intent(this, NSTweakFragment.class));
+		tab1.setIndicator(getString(R.string.ns_tweak));
 		tabsAdapter.addTab(tab1, NSTweakFragment.class, null);
-		
-		TabSpec tab2 = tabHost.newTabSpec("cpu");
-		tab2.setIndicator(getString(R.string.label_cpu_tweak), res.getDrawable(R.drawable.ic_tab_cpu));
-		//tab2.setContent(new Intent(this, CPUFragment.class));
-		tabsAdapter.addTab(tab2, CPUFragment.class, null);
-		
-		TabSpec tab3 = tabHost.newTabSpec("volt");
-		tab3.setIndicator(getString(R.string.voltage_control), res.getDrawable(R.drawable.ic_tab_voltages));
-		//tab3.setContent(new Intent(this, VoltageControlFragment.class));
-		tabsAdapter.addTab(tab3, VoltageControlFragment.class, null);
-		
-		TabSpec tab4 = tabHost.newTabSpec("setting");
-		tab4.setIndicator(getString(R.string.label_setting), res.getDrawable(R.drawable.ic_tab_settings));
-		//tab4.setContent(new Intent(this, SettingFragment.class));
-		tabsAdapter.addTab(tab4, SettingFragment.class, null);
 
-		TabSpec tab5 = tabHost.newTabSpec("info");
-		tab5.setIndicator(getString(R.string.label_info), res.getDrawable(R.drawable.ic_tab_info));
-		tabsAdapter.addTab(tab5, InfoFragment.class, null);
+		TabSpec tab2 = tabHost.newTabSpec("performance");
+		tab2.setIndicator(getString(R.string.label_performance_tweak));
+		tabsAdapter.addTab(tab2, PerformanceFragment.class, null);
 
-		TabSpec tab6 = tabHost.newTabSpec("chargingcontrol");
-		tab6.setIndicator(getString(R.string.label_battery_tweak));
-		tabsAdapter.addTab(tab6, BatteryFragment.class, null);
+		TabSpec tab3 = tabHost.newTabSpec("cpu");
+		tab3.setIndicator(getString(R.string.label_cpu_tweak));
+		tabsAdapter.addTab(tab3, CPUFragment.class, null);
 
+		TabSpec tab4 = tabHost.newTabSpec("volt");
+		tab4.setIndicator(getString(R.string.voltage_control));
+		tabsAdapter.addTab(tab4, VoltageControlFragment.class, null);
+
+		TabSpec tab5 = tabHost.newTabSpec("chargingcontrol");
+		tab5.setIndicator(getString(R.string.label_battery_tweak));
+		tabsAdapter.addTab(tab5, BatteryFragment.class, null);
+
+		TabSpec tab6 = tabHost.newTabSpec("audio");
+		tab6.setIndicator(getString(R.string.label_audio_tweak));
+		tabsAdapter.addTab(tab6, AudioFragment.class, null);
+		
+		TabSpec tab7 = tabHost.newTabSpec("setting");
+		tab7.setIndicator(getString(R.string.label_setting));
+		tabsAdapter.addTab(tab7, SettingFragment.class, null);
+
+		TabSpec tab8 = tabHost.newTabSpec("info");
+		tab8.setIndicator(getString(R.string.label_info));
+		tabsAdapter.addTab(tab8, InfoFragment.class, null);
+
+		suggestedWidth = tabsAdapter.getSuggestedWidth();
        		// set the width of tab 
-		//int widthTab = mView.getLayoutParams().width/4;
         	for(int i=0;i<tabHost.getTabWidget().getChildCount();i++){
-             	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = tabsAdapter.getSuggestedWidth();
-		//tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = getSuggestedWidth();
+             	tabHost.getTabWidget().getChildAt(i).getLayoutParams().width = suggestedWidth;
         	}
 		
 		if (savedInstanceState != null) {
@@ -160,14 +167,20 @@ public class MainActivity extends FragmentActivity {
 	private void extractScripts() {
 		String scriptDir = getString(R.string.SCRIPT_DIR);
 		String scriptVersion = getString(R.string.SCRIPT_VERSION);
+		String settingsDir = getString(R.string.SETTINGS_DIR);
+		String prefsDir = getString(R.string.PREFS_DIR);
 		
 		String scriptVersionTagFile = scriptDir + scriptVersion;
 		// first check script version (in the future we can change SCRIPT_VERSION constant to overwrite existing scripts)
 		if(!new File(scriptVersionTagFile).exists()) {
 			try {
 				SysCommand sc = SysCommand.getInstance();
+				int r = sc.suRun("rm", "-r", prefsDir);
+				if(r < 0) {
+					Log.e(LOG_TAG, sc.getLastError(0));
+				}
 				// clean old script dir
-				int r = sc.run("rm", "-r", scriptDir);
+				r = sc.suRun("rm", "-r", scriptDir);
 				if(r < 0) {
 					Log.e(LOG_TAG, sc.getLastError(0));
 				}
@@ -177,7 +190,7 @@ public class MainActivity extends FragmentActivity {
 				String[] scripts = getResources().getStringArray(R.array.scripts);
 				for(String f: scripts) {
 					copyAsset(f, scriptDir + f);
-					r = SysCommand.getInstance().run("chmod", "0755", scriptDir + f);
+					r = SysCommand.getInstance().suRun("chmod", "0755", scriptDir + f);
 					if(r < 0) {
 						Log.e(LOG_TAG, sc.getLastError(0));
 					}
@@ -191,27 +204,15 @@ public class MainActivity extends FragmentActivity {
 				pref.edit().clear().commit();
 			}catch(IOException e) {
 				Log.e(LOG_TAG, "failed to extract scripts", e);
+			}catch(NullPointerException e) {
+				Log.e(LOG_TAG, "failed to extract scripts", e);
 			}
 		}
 	}
 	
 	public static void restart(Context c) {
-		Intent i = new Intent(c, MainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        c.startActivity(i);
+	    Intent i = new Intent(c, MainActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            c.startActivity(i);
 	}
-
-	@Override
-	protected void onDestroy() {
-		Log.d(LOG_TAG, "onDestroy");
-		SettingsManager.saveToInitd(this);
-		super.onDestroy();
-	}
-
-/*        protected int getSuggestedWidth() {
-	View mView = (View) findViewById(R.id.root);
-	int widthTab = mView.getLayoutParams().width/4;
-	return widthTab;
-        }
-*/
 }

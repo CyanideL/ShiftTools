@@ -1,7 +1,3 @@
-/**
- * RemovablePreferenceCategory.java
- * Jan 13, 2012 5:34:25 PM
- */
 package mobi.cyann.shifttools.preference;
 
 import android.content.Context;

@@ -1,7 +1,3 @@
-/**
- * GovernorPreferenceGroup.java
- * Jan 14, 2012 8:39:01 AM
- */
 package mobi.cyann.shifttools.preference;
 
 import mobi.cyann.shifttools.PreloadValues;
@@ -79,14 +75,11 @@ public class GovernorPreferenceGroup extends RemovablePreferenceCategory {
     		if(p instanceof BasePreference) {
     			BasePreference<?> bp = ((BasePreference<?>) p);
     			if(visible) {
-    				// show child
-    				bp.setVisible(true);
     				// reload values from interface
     				bp.reload(false);
-    			}else {
-    				// hide child
-    				bp.setVisible(false);	
-    			}
+			}
+    			// show (if visible=true) or hide child
+    			bp.setVisible(visible);	
     		}
     	}
 		super.onDependencyChanged(dependency, disableDependent);

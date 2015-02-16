@@ -1,6 +1,6 @@
 ui_print();
 ui_print("====================");
-ui_print("ShiftTools reset script");
+ui_print("ShiftTools Reset Script");
 ui_print("====================");
 ui_print();
 set_progress(0.1);
@@ -20,7 +20,7 @@ ifelse(is_mounted("/data"),
 ifelse(is_mounted("/datadata"),
 	ui_print("/datadata mounted, deleting ShiftTools preference..."),
 	ui_print("ERR: /datadata not mounted, this script may failed"));
-delete("/data/data/mobi.cyann.shifttools/shared_prefs/mobi.cyann.shifttools_preferences.xml", "/datadata/mobi.cyann.shifttools/shared_prefs/mobi.cyann.shifttools_preferences.xml");
+delete("/data/data/mobi.cyann.shifttools/shared_prefs/mobi.cyann.shifttools.xml", "/datadata/mobi.cyann.shifttools/shared_prefs/mobi.cyann.shifttools.xml");
 set_progress(1.0);
 ui_print();
 ui_print("-------------------------------------");

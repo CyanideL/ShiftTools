@@ -4,19 +4,18 @@
     <string name="app_version">1.2</string>
     
 	<string name="SETTINGS_DIR">/data/data/mobi.cyann.shifttools/settings/</string>
+	<string name="PREFS_DIR">/data/data/mobi.cyann.shifttools/shared_prefs/</string>
     <string name="SCRIPT_DIR">/data/data/mobi.cyann.shifttools/scripts/</string>
-    <string name="SCRIPT_VERSION">10</string>
+    <string name="SCRIPT_VERSION">13</string>
 
     <string-array name="scripts">
         <item>preload.sh</item>
     </string-array>
 
     <string name="PRELOAD_SCRIPT">/data/data/mobi.cyann.shifttools/scripts/preload.sh</string>
-    <string name="INITD_SCRIPT">/etc/init.d/99shifttools</string>
-    
-	<string name="shifttools_thread_url"></string>
+    <string name="shifttools_donation_url">http://forum.xda-developers.com/donatetome.php?u=5554845/</string>    
 	
-	<string name="key_fast_charge_forced">key_fast_charge_forced</string>
+    <string name="key_fast_charge_forced">key_fast_charge_forced</string>
     <string name="key_bld_status">key_bld_status</string>
     <string name="key_bld_delay">key_bld_delay</string>
     <string name="key_bln_status">key_bln_status</string>
@@ -37,20 +36,22 @@
     <string name="key_touchwake_status">key_touchwake_status</string>
     <string name="key_touchwake_delay">key_touchwake_delay</string>
     <string name="key_default_voltage">key_default_voltage</string>
+    <string name="key_default_gpu_voltage">key_default_gpu_voltage</string>
     <string name="key_arm_volt_pref">key_arm_volt_pref</string>
     <string name="key_uvmvtable_pref">key_uvmvtable_pref</string>
     <string name="key_max_arm_volt">key_max_arm_volt</string>
     <string name="key_int_volt_pref">key_int_volt_pref</string>
     <string name="key_max_int_volt">key_max_int_volt</string>
     <string name="key_dont_show_volt_warning">key_dont_show_volt_warning</string>
+    <string name="key_reboot_preference">key_reboot_preference</string>
     <string name="key_restore_on_boot">key_restore_on_boot</string>
-    <string name="key_restore_on_initd">key_restore_on_initd</string>
-    <string name="key_shifttools_service">key_shifttools_service</string>
     <string name="key_force_restore_on_boot">key_force_restore_on_boot</string>
+    <string name="key_shifttools_service">key_shifttools_service</string>
     <string name="key_load_settings">key_load_settings</string>
     <string name="key_save_settings">key_save_settings</string>
     <string name="key_delete_settings">key_delete_settings</string>
     <string name="key_about">key_about</string>
+    <string name="key_donation">key_donation</string>
     <string name="key_governor">key_governor</string>
     <string name="key_max_cpufreq">key_max_cpufreq</string>
     <string name="key_screenoff_maxfreq">key_screenoff_maxfreq</string>
@@ -70,12 +71,58 @@
     <string name="key_ondemand_up_threshold">key_ondemand_up_threshold</string>
     <string name="key_ondemand_sampling_down_factor">key_ondemand_sampling_down_factor</string>
     <string name="key_ondemand_powersave_bias">key_ondemand_powersave_bias</string>
+    <string name="key_ondemand_early_demand">key_ondemand_early_demand</string>
+    <string name="key_ondemand_grad_up_threshold">key_ondemand_grad_up_threshold</string>
+    <string name="key_ondemand_sleep_up_threshold">key_ondemand_sleep_up_threshold</string>
+    <string name="key_ondemand_sleep_sampling_rate">key_ondemand_sleep_sampling_rate</string>
+    <string name="key_lulzactiveq_inc_cpu_load">key_lulzactiveq_inc_cpu_load</string>
+    <string name="key_lulzactiveq_dec_cpu_load">key_lulzactiveq_dec_cpu_load</string>
+    <string name="key_lulzactiveq_pump_up_step">key_lulzactiveq_pump_up_step</string>
+    <string name="key_lulzactiveq_pump_down_step">key_lulzactiveq_pump_down_step</string>
+    <string name="key_lulzactiveq_screen_off_max_step">key_lulzactiveq_screen_off_max_step</string>
+    <string name="key_lulzactiveq_up_sample_time">key_lulzactiveq_up_sample_time</string>
+    <string name="key_lulzactiveq_down_sample_time">key_lulzactiveq_down_sample_time</string>
+    <string name="key_lulzactiveq_cpu_up_rate">key_lulzactiveq_cpu_up_rate</string>
+    <string name="key_lulzactiveq_cpu_down_rate">key_lulzactiveq_cpu_down_rate</string>
+    <string name="key_lulzactiveq_hispeed_freq">key_lulzactiveq_hispeed_freq</string>
+    <string name="key_lulzactiveq_hotplug_freq_1_1">key_lulzactiveq_hotplug_freq_1_1</string>
+    <string name="key_lulzactiveq_hotplug_freq_2_0">key_lulzactiveq_hotplug_freq_2_0</string>
+    <string name="key_lulzactiveq_hotplug_freq_2_1">key_lulzactiveq_hotplug_freq_2_1</string>
+    <string name="key_lulzactiveq_hotplug_freq_3_0">key_lulzactiveq_hotplug_freq_3_0</string>
+    <string name="key_lulzactiveq_hotplug_freq_3_1">key_lulzactiveq_hotplug_freq_3_1</string>
+    <string name="key_lulzactiveq_hotplug_freq_4_0">key_lulzactiveq_hotplug_freq_4_0</string>
+    <string name="key_lulzactiveq_hotplug_lock">key_lulzactiveq_hotplug_lock</string>
+    <string name="key_lulzactiveq_hotplug_rq_1_1">key_lulzactiveq_hotplug_rq_1_1</string>
+    <string name="key_lulzactiveq_hotplug_rq_2_0">key_lulzactiveq_hotplug_rq_2_0</string>
+    <string name="key_lulzactiveq_hotplug_rq_2_1">key_lulzactiveq_hotplug_rq_2_1</string>
+    <string name="key_lulzactiveq_hotplug_rq_3_0">key_lulzactiveq_hotplug_rq_3_0</string>
+    <string name="key_lulzactiveq_hotplug_rq_3_1">key_lulzactiveq_hotplug_rq_3_1</string>
+    <string name="key_lulzactiveq_hotplug_rq_4_0">key_lulzactiveq_hotplug_rq_4_0</string>
+    <string name="key_lulzactiveq_hotplug_sampling_rate">key_lulzactiveq_hotplug_sampling_rate</string>
+    <string name="key_lulzactiveq_ignore_nice_load">key_lulzactiveq_ignore_nice_load</string>
+    <string name="key_lulzactiveq_min_cpu_lock">key_lulzactiveq_min_cpu_lock</string>
+    <string name="key_lulzactiveq_max_cpu_lock">key_lulzactiveq_max_cpu_lock</string>
+    <string name="key_lulzactiveq_up_nr_cpus">key_lulzactiveq_up_nr_cpus</string>
+
+    <string name="key_hotplug_down_differential">key_hotplug_down_differential</string>
+    <string name="key_hotplug_down_threshold">key_hotplug_down_threshold</string>
+    <string name="key_hotplug_in_sampling_periods">key_hotplug_in_sampling_periods</string>
+    <string name="key_hotplug_out_sampling_periods">key_hotplug_out_sampling_periods</string>
+    <string name="key_hotplug_ignore_nice_load">key_hotplug_ignore_nice_load</string>
+    <string name="key_hotplug_io_is_busy">key_hotplug_io_is_busy</string>
+    <string name="key_hotplug_sampling_rate">key_hotplug_sampling_rate</string>
+    <string name="key_hotplug_up_threshold">key_hotplug_up_threshold</string>
+
     <string name="key_conservative_sampling_rate">key_conservative_sampling_rate</string>
     <string name="key_conservative_down_threshold">key_conservative_down_threshold</string>
     <string name="key_conservative_up_threshold">key_conservative_up_threshold</string>
     <string name="key_conservative_sampling_down_factor">key_conservative_sampling_down_factor</string>
     <string name="key_conservative_freq_step">key_conservative_freq_step</string>
     <string name="key_conservative_ignore_nice_load">key_conservative_ignore_nice_load</string>
+    <string name="key_conservative_sleep_up_threshold">key_conservative_sleep_up_threshold</string>
+    <string name="key_conservative_sleep_sampling_rate">key_conservative_sleep_sampling_rate</string>
+    <string name="key_conservative_smooth_up_enabled">key_conservative_smooth_up_enabled</string>
+    <string name="key_conservative_smooth_up">key_conservative_smooth_up</string>
 	<string name="key_smartass_awake_ideal_freq">key_smartass_awake_ideal_freq</string>
 	<string name="key_smartass_sleep_ideal_freq">key_smartass_sleep_ideal_freq</string>
 	<string name="key_smartass_sleep_wakeup_freq">key_smartass_sleep_wakeup_freq</string>
@@ -92,7 +139,25 @@
 	<string name="key_interactive_timer_rate">key_interactive_timer_rate</string>
 
 	<string name="key_smooth_ui_enabled">key_smooth_ui_enabled</string>
-       
+	<string name="key_dyn_fsync">key_dyn_fsync</string>
+	<string name="key_vibration_kernelcontrol">key_vibration_kernelcontrol</string>
+	<string name="key_vibration_intensity">key_vibration_intensity</string>
+	<string name="key_vibration_intensity_smdk4412">key_vibration_intensity_smdk4412</string>
+
+	<!-- LED Control -->
+	<string name="key_led_fade">key_led_fade</string>
+	<string name="key_led_intensity">key_led_intensity</string>
+	<string name="key_led_speed">key_led_speed</string>
+	<string name="key_led_slope_up_1">key_led_slope_up_1</string>
+	<string name="key_led_slope_up_2">key_led_slope_up_2</string>
+	<string name="key_led_slope_down_1">key_led_slope_down_1</string>
+	<string name="key_led_slope_down_2">key_led_slope_down_2</string>
+
+	<string name="key_touch_led_handling">key_touch_led_handling</string>
+	<string name="key_touch_led_on_screen_touch">key_touch_led_on_screen_touch</string>
+	<string name="key_touch_led_force_disable">key_touch_led_force_disable</string>
+	<string name="key_touch_led_timeout">key_touch_led_timeout</string>
+
 	<!-- Battery -->
 	<string name="key_dcp_ac_input_curr">key_dcp_ac_input_curr</string>
 	<string name="key_dcp_ac_chrg_curr">key_dcp_ac_chrg_curr</string>
@@ -103,7 +168,65 @@
 	<string name="key_ignore_stable_margin">key_ignore_stable_margin</string>
 	<string name="key_ignore_unstable_power">key_ignore_unstable_power</string>
 	<string name="key_batt_chrg_soft_volt">key_batt_chrg_soft_volt</string>
-     
+
+	<!-- GPU -->
+	<string name="key_gpu_control">key_gpu_control</string>
+	<string name="key_mali_gpu_utilization_timeout">key_mali_gpu_utilization_timeout</string>
+	<string name="key_step0_clk">key_step0_clk</string>
+	<string name="key_step0_up">key_step0_up</string>
+	<string name="key_step1_clk">key_step1_clk</string>
+	<string name="key_step1_down">key_step1_down</string>
+	<string name="key_step1_up">key_step1_up</string>
+	<string name="key_step2_clk">key_step2_clk</string>
+	<string name="key_step2_down">key_step2_down</string>
+	<string name="key_step2_up">key_step2_up</string>
+	<string name="key_step3_clk">key_step3_clk</string>
+	<string name="key_step3_down">key_step3_down</string>
+	<string name="key_step3_up">key_step3_up</string>
+	<string name="key_step4_clk">key_step4_clk</string>
+	<string name="key_step4_down">key_step4_down</string>
+	<string name="key_gpu_volt_pref">key_gpu_volt_pref</string>
+	<string name="key_max_gpu_volt">key_max_gpu_volt</string>
+	<string name="key_malivolt_pref">key_malivolt_pref</string>
+
+	<!-- Touch Boost 
+	<string name="key_touch_boost_enabled">key_touch_boost_enabled</string>
+	<string name="key_touch_boost_freq">key_touch_boost_freq</string> -->
+
+	<!-- Audio -->
+	<string name="key_voodoo_sound_stereo_expansion">key_voodoo_sound_stereo_expansion</string>
+	<string name="key_voodoo_sound_headphone_eq">key_voodoo_sound_headphone_eq</string>
+	<string name="key_voodoo_sound_speaker_tuning">key_voodoo_sound_speaker_tuning</string>
+	<string name="key_voodoo_sound_speaker_offset">key_voodoo_sound_speaker_offset</string>
+	<string name="key_voodoo_sound_headphone_amplifier_level">key_voodoo_sound_headphone_amplifier_level</string>
+	<string name="key_voodoo_sound_stereo_expansion_gain">key_voodoo_sound_stereo_expansion_gain</string>
+	<string name="key_voodoo_sound_headphone_eq_b1_gain">key_voodoo_sound_headphone_eq_b1_gain</string>
+	<string name="key_voodoo_sound_headphone_eq_b2_gain">key_voodoo_sound_headphone_eq_b2_gain</string>
+	<string name="key_voodoo_sound_headphone_eq_b3_gain">key_voodoo_sound_headphone_eq_b3_gain</string>
+	<string name="key_voodoo_sound_headphone_eq_b4_gain">key_voodoo_sound_headphone_eq_b4_gain</string>
+	<string name="key_voodoo_sound_headphone_eq_b5_gain">key_voodoo_sound_headphone_eq_b5_gain</string>
+	<string name="key_voodoo_sound_fll_tuning">key_voodoo_sound_fll_tuning</string>
+	<string name="key_voodoo_sound_dac_osr128">key_voodoo_sound_dac_osr128</string>
+	<string name="key_voodoo_sound_dac_direct">key_voodoo_sound_dac_direct</string>
+	<string name="key_voodoo_sound_adc_osr128">key_voodoo_sound_adc_osr128</string>
+	<string name="key_voodoo_sound_mono_downmix">key_voodoo_sound_mono_downmix</string>
+
+
+	<string name="key_boeffla_sound_boeffla_sound">key_boeffla_sound_boeffla_sound</string>
+	<string name="key_boeffla_sound_dac_oversampling">key_boeffla_sound_dac_oversampling</string>
+	<string name="key_boeffla_sound_stereo_expansion">key_boeffla_sound_stereo_expansion</string>
+	<string name="key_boeffla_sound_headphone_volume">key_boeffla_sound_headphone_volume</string>
+	<string name="key_boeffla_sound_speaker_volume">key_boeffla_sound_speaker_volume</string>
+	<string name="key_boeffla_sound_speaker_tuning">key_boeffla_sound_speaker_tuning</string>
+	<string name="key_boeffla_sound_speaker_offset">key_boeffla_sound_speaker_offset</string>
+	<string name="key_boeffla_sound_headphone_amplifier_level">key_boeffla_sound_headphone_amplifier_level</string>
+	<string name="key_boeffla_sound_speaker_expansion">key_boeffla_sound_speaker_expansion</string>
+	<string name="key_scoobydoo_sound_voodoo_sound_stereo_expansion">key_scoobydoo_sound_voodoo_sound_stereo_expansion</string>
+	<string name="key_boeffla_sound_fll_tuning">key_scoobydoo_sound_fll_tuning</string>
+	<string name="key_boeffla_sound_dac_direct">key_scoobydoo_sound_dac_direct</string>
+	<string name="key_boeffla_sound_mono_downmix">key_scoobydoo_sound_mono_downmix</string>
+	<string name="key_boeffla_sound_enable">key_boeffla_sound_enable</string>
+           
 	<string-array name="iosched_interfaces">
 	    <item>/sys/block/mtdblock4/queue/scheduler</item>
 	    <item>/sys/block/mmcblk0/queue/scheduler</item>

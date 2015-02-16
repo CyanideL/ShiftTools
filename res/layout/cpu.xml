@@ -10,19 +10,21 @@
             custom:maxValue="3"
             custom:minValue="0"
             custom:step="1"
-	    custom:description="0 = IDLE, 1 = AFTR\n2 = IDLE+LPA, 3 = AFTR+LPA (best powersaving)"
+	    custom:description="   0 = IDLE,   1 = AFTR\n2 = IDLE+LPA,   3 = AFTR+LPA (Deep Sleep)"
             android:summary="0"
         android:title="@string/title_idle_mode" />
    </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
 
-
+    <mobi.cyann.shifttools.preference.RemovablePreferenceCategory android:title="@string/label_governor" >
     <mobi.cyann.shifttools.preference.ListPreference
         custom:interfacePath="/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor"
         android:key="@string/key_governor"
         android:summary="@string/status_not_available"
         android:title="@string/label_governor"
         custom:valueType="string" />
+   </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
 
+    <mobi.cyann.shifttools.preference.RemovablePreferenceCategory android:title="@string/label_cpu_scaling" >
     <mobi.cyann.shifttools.preference.ListPreference
         custom:interfacePath="/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq"
         android:key="@string/key_min_cpufreq"
@@ -36,6 +38,7 @@
         android:summary="@string/status_not_available"
         android:title="@string/label_max_cpufreq"
         custom:valueType="integer" />
+   </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
 
     <mobi.cyann.shifttools.preference.RemovablePreferenceCategory android:title="@string/liveoc_tweak" >
 
@@ -77,6 +80,8 @@
             android:title="@string/label_deepidle_stats" />
     </mobi.cyann.shifttools.preference.RemovablePreferenceCategory>
 
+	<PreferenceCategory
+            android:key="@string/key_deepidle_stats" />
 
     <mobi.cyann.shifttools.preference.GovernorPreferenceGroup
         android:dependency="@string/key_governor"
@@ -98,7 +103,7 @@
             android:key="@string/key_ondemand_up_threshold"
             custom:maxValue="100"
             custom:metrics="%"
-            custom:minValue="1"
+            custom:minValue="11"
             custom:step="1"
             android:summary="0"
             android:title="@string/label_ondemand_up_threshold" />
@@ -121,6 +126,46 @@
             custom:step="10"
             android:summary="0"
             android:title="@string/label_ondemand_powersave_bias" />
+
+        <mobi.cyann.shifttools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/early_demand"
+            android:key="@string/key_ondemand_early_demand"
+	    custom:description="Calculate gradient of previous load and actual load."
+            android:summary="@string/status_not_available"
+            android:title="@string/label_ondemand_early_demand" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            android:dependency="@string/key_ondemand_early_demand"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/grad_up_threshold"
+            android:key="@string/key_ondemand_grad_up_threshold"
+	    custom:description="Scale up, if gradient is above this value."
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_ondemand_grad_up_threshold" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/sleep_up_threshold"
+            android:key="@string/key_ondemand_sleep_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_ondemand_sleep_up_threshold" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/ondemand/sleep_sampling_rate"
+            android:key="@string/key_ondemand_sleep_sampling_rate"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_ondemand_sleep_sampling_rate" />
+
     </mobi.cyann.shifttools.preference.GovernorPreferenceGroup>
 
     <mobi.cyann.shifttools.preference.GovernorPreferenceGroup
@@ -182,6 +227,45 @@
             android:key="@string/key_conservative_ignore_nice_load"
             android:summary="@string/status_not_available"
             android:title="@string/label_conservative_ignore_nice_load" />
+
+        <mobi.cyann.shifttools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/smooth_up_enabled"
+            android:key="@string/key_conservative_smooth_up_enabled"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_conservative_smooth_up_enabled" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            android:dependency="@string/key_conservative_smooth_up_enabled"
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/smooth_up"
+            android:key="@string/key_conservative_smooth_up"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_conservative_smooth_up" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/sleep_up_threshold"
+            android:key="@string/key_conservative_sleep_up_threshold"
+            custom:maxValue="100"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_conservative_sleep_up_threshold" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/conservative/sleep_sampling_rate"
+            android:key="@string/key_conservative_sleep_sampling_rate"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_conservative_sleep_sampling_rate" />
+
+
     </mobi.cyann.shifttools.preference.GovernorPreferenceGroup>
 
     <mobi.cyann.shifttools.preference.GovernorPreferenceGroup
@@ -412,6 +496,386 @@
             custom:step="1000"
             android:summary="0"
             android:title="@string/label_lulzactive_down_sample_time" />
+    </mobi.cyann.shifttools.preference.GovernorPreferenceGroup>
+
+<mobi.cyann.shifttools.preference.GovernorPreferenceGroup
+        android:dependency="@string/key_governor"
+        custom:governor="lulzactiveq"
+        android:title="@string/label_lulzactiveq" >
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hispeed_freq"
+            android:key="@string/key_lulzactiveq_hispeed_freq"
+            custom:maxValue="2000000"
+	    custom:description="Hi-speed to bump to from lo-speed when load burst"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hispeed_freq" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/inc_cpu_load"
+            android:key="@string/key_lulzactiveq_inc_cpu_load"
+            custom:maxValue="100"
+	    custom:description="Increase Freq above this CPU load"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_inc_cpu_load" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/dec_cpu_load"
+            android:key="@string/key_lulzactiveq_dec_cpu_load"
+            custom:maxValue="100"
+	    custom:description="Decrease Freq below this CPU load"
+            custom:metrics="%"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_dec_cpu_load" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_up_step"
+            android:key="@string/key_lulzactiveq_pump_up_step"
+            custom:maxValue="7"
+            custom:metrics="step"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_pump_up_step" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/pump_down_step"
+            android:key="@string/key_lulzactiveq_pump_down_step"
+            custom:maxValue="7"
+            custom:metrics="step"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_pump_down_step" />
+
+        <mobi.cyann.shifttools.preference.LulzactiveScreenOffPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/screen_off_max_step"
+            android:key="@string/key_lulzactiveq_screen_off_max_step"
+            custom:maxValue="20"
+	    custom:description="Step of max. freq. to be used when screen off. Example: Step 5= only use freq steps 1-5 (200mhz, 300mhz, ..., 600 mhz)"
+            custom:metrics="step"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_screen_off_max_step" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/up_sample_time"
+            android:key="@string/key_lulzactiveq_up_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_up_sample_time" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/down_sample_time"
+            android:key="@string/key_lulzactiveq_down_sample_time"
+            custom:maxValue="500000"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_down_sample_time" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/cpu_up_rate"
+            android:key="@string/key_lulzactiveq_cpu_up_rate"
+            custom:maxValue="40"
+	    custom:description="Sample time to calculate avg_rq and avg_freq for up-scaling"
+            custom:metrics="s"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_cpu_up_rate" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/cpu_down_rate"
+            android:key="@string/key_lulzactiveq_cpu_down_rate"
+            custom:maxValue="40"
+	    custom:description="Sample time to calculate avg_rq and avg_freq for down-scaling"
+            custom:metrics="s"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_cpu_down_rate" />
+
+        <mobi.cyann.shifttools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/ignore_nice_load"
+            android:key="@string/key_lulzactiveq_ignore_nice_load"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_lulzactiveq_ignore_nice_load" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/max_cpu_lock"
+            android:key="@string/key_lulzactiveq_max_cpu_lock"
+            custom:maxValue="4"
+	    custom:description="max number of online cpus. 0=disabled. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_max_cpu_lock" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/min_cpu_lock"
+            android:key="@string/key_lulzactiveq_min_cpu_lock"
+            custom:maxValue="4"
+	    custom:description="min number of online cpus. 0=disabled. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_min_cpu_lock" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_1_1"
+            android:key="@string/key_lulzactiveq_hotplug_freq_1_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 2nd Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_1_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_2_0"
+            android:key="@string/key_lulzactiveq_hotplug_freq_2_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 2nd Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_2_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_2_1"
+            android:key="@string/key_lulzactiveq_hotplug_freq_2_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 3rd Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_2_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_3_0"
+            android:key="@string/key_lulzactiveq_hotplug_freq_3_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 3rd Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_3_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_3_1"
+            android:key="@string/key_lulzactiveq_hotplug_freq_3_1"
+            custom:maxValue="2000000"
+	    custom:description="Above this Freq. turn 4th Cpu online"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_3_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_freq_4_0"
+            android:key="@string/key_lulzactiveq_hotplug_freq_4_0"
+            custom:maxValue="2000000"
+	    custom:description="Below this Freq. turn 4th Cpu offline"
+            custom:metrics="Hz"
+            custom:minValue="200000"
+            custom:step="100000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_freq_4_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_1_1"
+            android:key="@string/key_lulzactiveq_hotplug_rq_1_1"
+	    custom:description="Above this run queue lengh turn 2nd Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_1_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_2_0"
+            android:key="@string/key_lulzactiveq_hotplug_rq_2_0"
+	    custom:description="Below this run queue lengh turn 2nd Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_2_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_2_1"
+            android:key="@string/key_lulzactiveq_hotplug_rq_2_1"
+	    custom:description="Above this run queue lengh turn 3rd Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_2_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_3_0"
+            android:key="@string/key_lulzactiveq_hotplug_rq_3_0"
+	    custom:description="Below this run queue lengh turn 3rd Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_3_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_3_1"
+            android:key="@string/key_lulzactiveq_hotplug_rq_3_1"
+	    custom:description="Above this run queue lengh turn 4th Cpu online"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_3_1" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_rq_4_0"
+            android:key="@string/key_lulzactiveq_hotplug_rq_4_0"
+	    custom:description="Below this run queue lengh turn 4th Cpu offline"
+            custom:maxValue="1000"
+            custom:minValue="0"
+            custom:step="100"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_rq_4_0" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_sampling_rate"
+            android:key="@string/key_lulzactiveq_hotplug_sampling_rate"
+            custom:maxValue="500000"
+	    custom:description="Sets hot plug sampling intervals for screen-on state"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_sampling_rate" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/up_nr_cpus"
+            android:key="@string/key_lulzactiveq_up_nr_cpus"
+            custom:maxValue="4"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_up_nr_cpus" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/lulzactiveq/hotplug_lock"
+            android:key="@string/key_lulzactiveq_hotplug_lock"
+            custom:maxValue="4"
+	    custom:description="Fixed number of online cpus. 0=auto-hotplug. priority: hotplug_lock > max_cpu_lock > min_cpu_lock"
+            custom:metrics="cores"
+            custom:minValue="0"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_lulzactiveq_hotplug_lock" />
+    </mobi.cyann.shifttools.preference.GovernorPreferenceGroup>
+
+<mobi.cyann.shifttools.preference.GovernorPreferenceGroup
+        android:dependency="@string/key_governor"
+        custom:governor="hotplug"
+        android:title="@string/label_hotplug" >
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/up_threshold"
+            android:key="@string/key_hotplug_up_threshold"
+            custom:maxValue="100"
+	    custom:description="Above this load, CPU scales up"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_up_threshold" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/down_threshold"
+            android:key="@string/key_hotplug_down_threshold"
+            custom:maxValue="100"
+	    custom:description="Below this load, CPU scales down"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_down_threshold" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/sampling_rate"
+            android:key="@string/key_hotplug_sampling_rate"
+            custom:maxValue="500000"
+	    custom:description="Time between two samples"
+            custom:metrics="µs"
+            custom:minValue="10000"
+            custom:step="1000"
+            android:summary="0"
+            android:title="@string/label_hotplug_sampling_rate" />
+
+        <mobi.cyann.shifttools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/ignore_nice_load"
+            android:key="@string/key_hotplug_ignore_nice_load"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_hotplug_ignore_nice_load" />
+
+        <mobi.cyann.shifttools.preference.StatusPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/io_is_busy"
+            android:key="@string/key_hotplug_io_is_busy"
+            android:summary="@string/status_not_available"
+            android:title="@string/label_hotplug_io_is_busy" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/down_differential"
+            android:key="@string/key_hotplug_down_differential"
+            custom:maxValue="100"
+	    custom:description="Keep x % of idle under the up threshold when decreasing the frequency"
+            custom:metrics="%"
+            custom:minValue="11"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_down_differential" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/hotplug_in_sampling_periods"
+            android:key="@string/key_hotplug_in_sampling_periods"
+            custom:maxValue="40"
+	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu on)?"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_in_sampling_periods" />
+
+        <mobi.cyann.shifttools.preference.IntegerPreference
+            custom:interfacePath="/sys/devices/system/cpu/cpufreq/hotplug/hotplug_out_sampling_periods"
+            android:key="@string/key_hotplug_out_sampling_periods"
+            custom:maxValue="40"
+	    custom:description="how many sampling periods do we use for hotplug decisions (turn cpu off)?"
+            custom:minValue="1"
+            custom:step="1"
+            android:summary="0"
+            android:title="@string/label_hotplug_out_sampling_periods" />
     </mobi.cyann.shifttools.preference.GovernorPreferenceGroup>
 
 </PreferenceScreen>

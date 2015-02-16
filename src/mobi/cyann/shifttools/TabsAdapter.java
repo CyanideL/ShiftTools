@@ -1,11 +1,8 @@
-/**
- * TabsAdapter.java
- * Feb 1, 2012 10:32:29 PM
- */
 package mobi.cyann.shifttools;
 
 import java.util.ArrayList;
 
+import android.util.Log;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -96,8 +93,8 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 		int position = mTabHost.getCurrentTab();
 		mViewPager.setCurrentItem(position);
 
-		int widthTab = getSuggestedWidth();
-		MainActivity.mScrollView.smoothScrollTo(widthTab*position, 0);
+		int scrollX = MainActivity.suggestedWidth*position;
+		MainActivity.mScrollView.smoothScrollTo(scrollX, 0);
 	}
 
 	@Override
@@ -125,8 +122,12 @@ public class TabsAdapter extends FragmentPagerAdapter implements TabHost.OnTabCh
 
         protected int getSuggestedWidth() {
     	DisplayMetrics metrics = new DisplayMetrics();
+	int screenWidth = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
     	((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
-    	float widthTab = (((metrics.widthPixels / metrics.density))/3);
+    	float widthTab = (screenWidth/3)*(240/DisplayMetrics.DENSITY_DEVICE);
+	if (screenWidth > 480) {
+    	widthTab = (screenWidth/3)*(320/DisplayMetrics.DENSITY_DEVICE);
+	}
 	return (int) widthTab;
         }
 

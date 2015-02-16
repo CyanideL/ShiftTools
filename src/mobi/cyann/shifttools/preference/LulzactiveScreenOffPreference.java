@@ -1,7 +1,3 @@
-/**
- * LulzactiveScreenOffPreference.java
- * Jan 14, 2012 9:36:34 AM
- */
 package mobi.cyann.shifttools.preference;
 
 import mobi.cyann.shifttools.R;

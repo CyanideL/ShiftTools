@@ -1,7 +1,3 @@
-/**
- * FileSelectPreference.java
- * Jan 1, 2012 12:33:20 PM
- */
 package mobi.cyann.shifttools.preference;
 
 import java.io.File;

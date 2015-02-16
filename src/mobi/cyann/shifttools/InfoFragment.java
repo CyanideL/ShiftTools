@@ -25,10 +25,11 @@ public class InfoFragment extends PreferenceListFragment implements OnPreference
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Helper help = Helper.getInstance();
-        help.readFile("/proc/version");
+	SysCommand sysCommand = SysCommand.getInstance();
         Preference pref = findPreference("kernel_version");
-        pref.setSummary(help.getOutResult().get(0));
+	if(sysCommand.readSysfs("/proc/version") > 0) {
+           pref.setSummary(sysCommand.getLastResult(0));
+	}
         
         MemoryInfo mi = new MemoryInfo();
         ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(Context.ACTIVITY_SERVICE);
@@ -42,15 +43,18 @@ public class InfoFragment extends PreferenceListFragment implements OnPreference
 	Preference about = findPreference(getString(R.string.key_about));
 	about.setOnPreferenceClickListener(this);
 	about.setTitle(getString(R.string.app_name)+ " " + getString(R.string.app_version));
+
+	Preference donation = findPreference(getString(R.string.key_donation));
+	donation.setOnPreferenceClickListener(this);
         
     }
 
 	@Override
 	public boolean onPreferenceClick(Preference preference) {
-		if(preference.getKey().equals(getString(R.string.key_about))) {
+		if(preference.getKey().equals(getString(R.string.key_donation))) {
 			Intent browse = new Intent();
 			browse.setAction(Intent.ACTION_VIEW);
-			browse.setData(Uri.parse(getString(R.string.shifttools_thread_url)));
+			browse.setData(Uri.parse(getString(R.string.shifttools_donation_url)));
 			startActivity(browse);
 		}
 		return false;
